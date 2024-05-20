@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigationbar</title>
+
+    <style>
+        body {
+            background: url(white.jpg);
+            background-size: cover;
+            margin: 0;
+
+        }
+         
+
+
+        .navabar {
+            background-color: rgb(59, 169, 191);
+            /*border-radius: 18px;*/
+            position: fixed;
+            overflow: hidden;
+            width: 100%;
+            display:inline-block;
+            top: 0;
+            z-index: 1000;
+
+        }
+
+        .navabar ul {
+            overflow: auto;
+        }
+
+        .navabar li {
+            float: left;
+            list-style: none;
+            margin: 13px 20px;
+        }
+
+        .navabar li a {
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            padding: 14px 14px;
+            transition: background-colour 0.2s ease-in;
+            transition: color 0.3s ease;
+
+        }
+
+        .navabar li a:hover {
+            color: rgb(52, 53, 46);
+            font-size: 22px;
+            background-color: whitesmoke;
+        }
+        .content h1{
+            font-size: 40px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .content {
+            justify-content: center;
+            padding: 20px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 25px;
+            margin-top: 100px;
+            margin-left: 30px;
+            margin-right: 50%;
+        }
+
+        @media (max-width:480px){
+            .navabar{
+                display: block;
+            }
+            .content h1{
+                margin-top:150px;
+            }
+        }
+	
+       
+    </style>
+</head>
+
+<body>
+<section class="tuc">
+<header class="okk">
+    
+    <div class="navabar" id="navabar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">us</a></li>
+            <li><a href="#">contact</a></li>
+
+        </ul>
+    </div>
+</header>
+    <div class="content">
+        <h1> Landing page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, modi! Eum dolores rerum accusantium, sunt
+            explicabo repudiandae provident necessitatibus laborum a ad minus, veritatis, nesciunt laboriosam est
+            blanditiis! Dolor ea voluptate dicta esse voluptas eos ex nam numquam deleniti eius saepe iste, omnis
+            aspernatur, suscipit distinctio autem, eveniet mollitia iusto?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius suscipit qui voluptate iure vitae debitis.
+            Blanditiis cumque possimus dignissimos natus ipsam culpa asperiores quia repudiandae eligendi. Qui voluptas
+            dolores ipsa, corporis, voluptate repellat at vel quod possimus laborum placeat corrupti nisi consectetur
+            quisquam exercitationem? Amet accusamus nihil illo, deleniti, ipsa libero sunt dignissimos natus inventore
+            quae reiciendis. Sint, reiciendis voluptatibus perferendis qui consectetur odit! Quo itaque porro maxime
+            molestias, fugiat eum quae assumenda iste, quibusdam dolores incidunt animi id cupiditate.
+        </p>
+        <br>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, modi! Eum dolores rerum accusantium, sunt
+            explicabo repudiandae provident necessitatibus laborum a ad minus, veritatis, nesciunt laboriosam est
+            blanditiis! Dolor ea voluptate dicta esse voluptas eos ex nam numquam deleniti eius saepe iste, omnis
+            aspernatur, suscipit distinctio autem, eveniet mollitia iusto?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius suscipit qui voluptate iure vitae debitis.
+            Blanditiis cumque possimus dignissimos natus ipsam culpa asperiores quia repudiandae eligendi. Qui voluptas
+            dolores ipsa, corporis, voluptate repellat at vel quod possimus laborum placeat corrupti nisi consectetur
+            quisquam exercitationem? Amet accusamus nihil illo, deleniti, ipsa libero sunt dignissimos natus inventore
+            quae reiciendis. Sint, reiciendis voluptatibus perferendis qui consectetur odit! Quo itaque porro maxime
+            molestias, fugiat eum quae assumenda iste, quibusdam dolores incidunt animi id cupiditate.
+        </p>
+    </div>
+</section>
+
+
+
+   <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.querySelector(".navabar").style.backgroundColor = "black";
+            } else {
+                document.querySelector(".navabar").style.backgroundColor = "#025AFE  ";
+                document.querySelector(".navabar").style.Color = "black ";
+            }
+        }
+</script>
+   
+
+</body>
+
+</html>

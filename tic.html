@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Bitter:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poetsen+One&family=Yellowtail&display=swap" rel="stylesheet">
+    <title>Tic Tac Toe</title>
+<style>
+body {
+    font-family: "poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    background: radial-gradient(circle,
+            rgba(63, 95, 211, 1)0%,
+            rgb(235, 91, 223, 1)55%,
+            rgb(163, 169, 200, 1)100%);
+
+}
+
+:root {
+    --orangecolor: #f06113;
+}
+
+.container {
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 80px;
+    margin-top: 10%;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    margin-bottom: -12px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 15px;
+    margin: 20px auto;
+    width: 354px;
+    height: 375px;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    padding: 1rem 4rem;
+    background-color: rgba(218, 202, 202, 0.933);
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 2px solid #000;
+    box-shadow: 2px 5px 5px black;
+    cursor: pointer;
+    color: rgb(7, 69, 79);
+    background-color: rgb(250, 215, 60);
+    font-weight: 500;
+    font-size: 65px;
+    margin: 0.5rem;
+
+}
+
+.box.winningbox {
+    background-color: white;
+}
+
+button {
+    margin-top: -5px;
+    padding: 0.8px;
+    background-color: orange;
+    color: black;
+    font-size: 26px;
+    font-family: "Bitter", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    align-self: center;
+}
+
+button:hover {
+    font-size: 30px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+#message {
+    font-size: 55px;
+    margin-top: 15px;
+    font-family: "Aleo", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <div id="gameBoard" class="board">
+            <div class="box" data-index="0"></div>
+            <div class="box" data-index="1"></div>
+            <div class="box" data-index="2"></div>
+            <div class="box" data-index="3"></div>
+            <div class="box" data-index="4"></div>
+            <div class="box" data-index="5"></div>
+            <div class="box" data-index="6"></div>
+            <div class="box" data-index="7"></div>
+            <div class="box" data-index="8"></div>
+        </div>
+        <button id="resetButton">Reset Game</button>
+        <p id="message"></p>
+        <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.box');
+    const message = document.getElementById('message');
+    const resetButton = document.getElementById('resetButton');
+    let currentPlayer = 'O';
+    let game = Array(9).fill(null);
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    function handleboxClick(e) {
+        const index = e.target.dataset.index;
+        if (game[index] || Winner()) return;
+
+        game[index] = currentPlayer;
+        e.target.textContent = currentPlayer;
+
+        if (Winner()) {
+            message.textContent = `Player ${currentPlayer} wins!`;
+            Winningboxes();
+        } else if (game.every(box => box)) {
+            message.textContent = 'Draw!';
+        } else {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+    }
+
+    function Winner() {
+        return winConditions.some(condition => {
+            const [a, b, c] = condition;
+            return game[a] && game[a] === game[b] && game[a] === game[c];
+        });
+    }
+
+    function Winningboxes() {
+        winConditions.forEach(condition => {
+            const [a, b, c] = condition;
+            if (game[a] && game[a] === game[b] && game[a] === game[c]) {
+                boxes[a].classList.add('winningbox');
+                boxes[b].classList.add('winningbox');
+                boxes[c].classList.add('winningbox');
+            }
+        });
+    }
+
+    function resetGame() {
+        game = Array(9).fill(null);
+        boxes.forEach(box=> {
+            box.textContent = '';
+            box.classList.remove('winningbox');
+        });
+        currentPlayer = 'O';
+        message.textContent = '';
+    }
+
+    boxes.forEach(box => box.addEventListener('click', handleboxClick));
+    resetButton.addEventListener('click', resetGame);
+});
+
+    
+        </script>
+    </div>
+</body>
+</html>
